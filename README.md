@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Architect Studio
 
-## Getting Started
+A premium, minimalist architecture portfolio website built with **Next.js 16**, **Tailwind CSS**, and **Server Actions**. This project features a robust admin dashboard for content management, advanced scroll animations, and full **Progressive Web App (PWA)** capabilities.
 
-First, run the development server:
+## 🚀 Features
+
+### Public Frontend
+- **Immersive UX**: Custom parallax scrolling with spring physics and reveal animations.
+- **Project Showcase**: Staggered grid layouts and detailed project pages with galleries and PDF downloads.
+- **Performance**: Static and dynamic optimization with Next.js App Router.
+- **PWA Ready**: Installable on mobile/desktop with offline caching support.
+
+### Admin Dashboard
+- **Secure Access**: JWT-based authentication protecting `/admin` routes.
+- **Project Management**: Create, Edit, and Delete projects.
+- **Media Management**: Drag-and-drop integration with **ImageKit** for high-performance image and PDF hosting.
+- **Inquiries**: centralized view of contact form messages with email notifications.
+
+## 🛠 Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Database**: [MongoDB](https://www.mongodb.com/) (Mongoose ODM)
+- **Storage**: [ImageKit](https://imagekit.io/)
+- **Email**: [Nodemailer](https://nodemailer.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **PWA**: [@ducanh2912/next-pwa](https://github.com/DuCanhGH/next-pwa)
+
+## 📦 Getting Started
+
+### 1. Prerequisites
+- Node.js 18+
+- MongoDB URI
+- ImageKit Account (Public/Private Keys, URL Endpoint)
+- SMTP Server (e.g., Gmail, SendGrid, or similar) for emails
+
+### 2. Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <repository-url>
+cd architect
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 3. Environment Configuration
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file in the root directory:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Database
+MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/architect
 
-## Learn More
+# ImageKit (Media Storage)
+IMAGEKIT_PUBLIC_KEY=your_public_key
+IMAGEKIT_PRIVATE_KEY=your_private_key
+IMAGEKIT_URL_ENDPOINT=https://ik.imagekit.io/your_id/
 
-To learn more about Next.js, take a look at the following resources:
+# Email (Nodemailer)
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USER=your_email@example.com
+SMTP_PASS=your_email_password
+SMTP_ADMIN_EMAIL=admin@example.com
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Admin Authentication
+ADMIN_SECRET=complex_secret_string_for_jwt_signing
+ADMIN_PASSWORD=your_secure_admin_login_password
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 4. Running the Project
 
-## Deploy on Vercel
+**Development Mode:**
+```bash
+npm run dev
+# Starts server at http://localhost:3000
+# Note: PWA is disabled in dev mode by default.
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Production Build:**
+```bash
+npm run build
+npm start
+# Required for testing PWA functionality (Service Workers)
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📂 Project Structure
+
+```
+src/
+├── actions/        # Server Actions (Backend Logic)
+├── app/            # Next.js App Router Pages
+│   ├── (public)/   # Public usage routes
+│   ├── admin/      # Protected admin routes
+│   └── api/        # API routes (if any)
+├── components/     # Reusable UI components
+├── lib/            # Utilities (DB, ImageKit, Models)
+└── ...
+```
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
