@@ -10,14 +10,23 @@ export type ContactState = {
     error?: string;
 };
 
+function escapeHtml(text: string): string {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
 export async function submitContact(prevState: ContactState, formData: FormData): Promise<ContactState> {
     await dbConnect();
 
     try {
-        const name = formData.get('name') as string;
-        const email = formData.get('email') as string;
-        const subject = formData.get('subject') as string;
-        const message = formData.get('message') as string;
+        const name = escapeHtml(formData.get('name') as string);
+        const email = escapeHtml(formData.get('email') as string);
+        const subject = escapeHtml(formData.get('subject') as string);
+        const message = escapeHtml(formData.get('message') as string);
 
         // 1. Save to Database
         await Message.create({

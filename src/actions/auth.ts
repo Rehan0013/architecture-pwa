@@ -4,8 +4,12 @@ import { SignJWT } from 'jose';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-const SECRET_KEY = process.env.ADMIN_SECRET || 'eb943c53907b58a860dc9f904312qwas';
+const SECRET_KEY = process.env.ADMIN_SECRET;
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+
+if (!SECRET_KEY || !ADMIN_PASSWORD) {
+    throw new Error('Missing ADMIN_SECRET or ADMIN_PASSWORD environment variable');
+}
 
 const key = new TextEncoder().encode(SECRET_KEY);
 

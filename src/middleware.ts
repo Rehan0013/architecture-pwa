@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
 
-const SECRET_KEY = process.env.ADMIN_SECRET || 'fallback_secret_key_change_me';
+const SECRET_KEY = process.env.ADMIN_SECRET || '';
 const key = new TextEncoder().encode(SECRET_KEY);
 
 export async function middleware(request: NextRequest) {
