@@ -23,11 +23,11 @@ export default async function Home() {
         imageAlt="Modern concrete architecture"
         overlayOpacity={0.3}
       >
-        <div className="text-center space-y-8 text-white">
-          <h1 className="text-6xl md:text-9xl font-serif font-light tracking-tight leading-tight">
+        <div className="text-center space-y-4 md:space-y-8 text-white">
+          <h1 className="text-5xl md:text-9xl font-serif font-light tracking-tight leading-tight px-4">
             Design <br /> for Impact.
           </h1>
-          <p className="text-sm md:text-base uppercase tracking-[0.2em] text-neutral-200 max-w-md mx-auto">
+          <p className="text-[10px] md:text-base uppercase tracking-[0.2em] text-neutral-200 max-w-md mx-auto px-6">
             A multidisciplinary architecture and design studio creating timeless spaces.
           </p>
         </div>
@@ -40,7 +40,7 @@ export default async function Home() {
             <span className="text-xs uppercase tracking-widest text-neutral-500 block mb-6 border-l-2 border-black dark:border-white pl-4">The Studio</span>
           </div>
           <div className="md:w-2/3">
-            <h2 className="text-3xl md:text-5xl font-serif leading-tight text-neutral-800 dark:text-neutral-100 mb-8">
+            <h2 className="text-2xl md:text-5xl font-serif leading-tight text-neutral-800 dark:text-neutral-100 mb-8">
               We believe architecture is more than shelter. It is the stage for life, a catalyst for connection, and a legacy for the future.
             </h2>
             <div className="flex gap-4">
@@ -65,7 +65,7 @@ export default async function Home() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {featuredProjects.map((project: IProject, i: number) => (
               <Link
                 href={`/projects/${String(project._id)}`}
@@ -85,8 +85,8 @@ export default async function Home() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
                 </div>
                 <div className="px-2">
-                  <h3 className="text-xl font-serif mb-1 group-hover:underline decoration-1 underline-offset-4">{project.title}</h3>
-                  <p className="text-sm text-neutral-500 uppercase tracking-wide">{project.location} — {project.year}</p>
+                  <h3 className="text-base md:text-xl font-serif mb-1 group-hover:underline decoration-1 underline-offset-4">{project.title}</h3>
+                  <p className="text-[10px] md:text-sm text-neutral-500 uppercase tracking-wide">{project.location} — {project.year}</p>
                 </div>
               </Link>
             ))}

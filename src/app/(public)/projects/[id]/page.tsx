@@ -65,15 +65,19 @@ export default async function ProjectDetails({ params }: { params: Promise<{ id:
 
             {/* Image Gallery */}
             <div className="px-6 md:px-12 pb-20">
-                <div className="max-w-7xl mx-auto space-y-8 md:space-y-16">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                     {project.images.map((img: { url: string }, index: number) => (
-                        <div key={index} className="relative w-full aspect-[16/9] md:aspect-[21/9] bg-neutral-100 dark:bg-neutral-800 overflow-hidden">
+                        <div
+                            key={index}
+                            className={`relative w-full aspect-[4/3] bg-neutral-100 dark:bg-neutral-800 overflow-hidden ${index % 3 === 0 ? 'md:col-span-2 md:aspect-[21/9]' : ''
+                                }`}
+                        >
                             <Image
                                 src={img.url}
                                 alt={`${project.title} - Image ${index + 1}`}
                                 fill
-                                className="object-cover"
-                                sizes="100vw"
+                                className="object-cover hover:scale-105 transition-transform duration-1000 ease-out"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw"
                             />
                         </div>
                     ))}
